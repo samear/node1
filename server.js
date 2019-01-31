@@ -11,9 +11,6 @@ app.get("/hi", security.authorization, function(req, res)  {
 
     let location = "San Francisco";
 
- 
-
-
     console.log("personId=" + req.query.personId);
     console.log("count=" + req.query.count);
 
@@ -29,10 +26,7 @@ app.get("/hi", security.authorization, function(req, res)  {
     res.end(JSON.stringify(person));
 });
 
-
 app.get("/say/:id/xxx/:name", function(req, res)  {
-
- 
 
     res.status(200);
     
@@ -42,7 +36,6 @@ app.get("/say/:id/xxx/:name", function(req, res)  {
    // next('route');
 
     res.end("Say Say Say " + idParam + " " + nameParam);
-
     
 });
 
@@ -68,12 +61,7 @@ console.log("In 500");
 
     res.sendFile(path.join(__dirname, './public', '500.html'));
 
-
 });
-
-
-
 
 app.listen(4040);
 console.log("Server Started");
-
