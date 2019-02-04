@@ -16,20 +16,19 @@ async function demo() {
    await sleep(10000);
    console.log('Two seconds later');
 }
-/*
+
 function myLoop() {
    for(var i=0; i<100000; i++) {
       console.log(i);
    }
 }
-*/
 
 app.get("/", function(req, res, next) {
     res.status(200);
    
-    //myLoop();
+    myLoop();
     //demo();
-    setTimeout(myFunc, 1500, 'funky');
+    //setTimeout(myFunc, 1500, 'funky');
 
     res.sendFile(path.join(__dirname, './public', 'index.html'));
 });
