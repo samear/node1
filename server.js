@@ -1,12 +1,40 @@
-
 var express = require("express");
 var assert = require("assert");
 var path = require("path");
 
 var security = require("./security.js");
+var myTimers = require("./myTimers.js");
 
 var app = express();
 
+function sleep(ms) {
+   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function demo() {
+   console.log('taking a break...');
+   await sleep(10000);
+   console.log('Two seconds later');
+}
+/*
+function myLoop() {
+   for(var i=0; i<100000; i++) {
+      console.log(i);
+   }
+}
+*/
+
+app.get("/", function(req, res, next) {
+    res.status(200);
+   
+    //myLoop();
+    //demo();
+    setTimeout(myFunc, 1500, 'funky');
+
+    res.sendFile(path.join(__dirname, './public', 'index.html'));
+});
+
+/*
 app.get("/hi", security.authorization, function(req, res)  {
 
     let location = "San Francisco";
@@ -25,7 +53,8 @@ app.get("/hi", security.authorization, function(req, res)  {
 
     res.end(JSON.stringify(person));
 });
-
+*/
+/*
 app.get("/say/:id/xxx/:name", function(req, res)  {
 
     res.status(200);
@@ -38,20 +67,18 @@ app.get("/say/:id/xxx/:name", function(req, res)  {
     res.end("Say Say Say " + idParam + " " + nameParam);
     
 });
+*/
 
-app.get("/", function(req, res, next) {
- 
-    res.status(200);
-    res.sendFile(path.join(__dirname, './public', 'index.html'));
-});
-
+/*
 app.use(function(req, res, next) {
     console.log("In 404");
 
     res.status(404);
     res.sendFile(path.join(__dirname, './public', '404.html'));
 });
+*/
 
+/*
 app.use(function(err, req, res, next) {
 console.log("In 500");
 
@@ -60,8 +87,8 @@ console.log("In 500");
     res.status(500);
 
     res.sendFile(path.join(__dirname, './public', '500.html'));
-
 });
+*/
 
 app.listen(4040);
 console.log("Server Started");
