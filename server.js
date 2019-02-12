@@ -17,16 +17,17 @@ async function demo() {
    console.log('Two seconds later');
 }
 
-function myLoop() {
-   for(var i=0; i<100000; i++) {
-      console.log(i);
+function doSomething() {
+   for(var i=0; i<1000; i++) {
+   var rand = Math.floor(Math.random() * i);
+      console.log(rand);
    }
 }
 
 app.get("/", function(req, res, next) {
     res.status(200);
    
-    myLoop();
+     doSomething();
     //demo();
     //setTimeout(myFunc, 1500, 'funky');
 
